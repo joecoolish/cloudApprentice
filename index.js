@@ -16,8 +16,8 @@ clear();
 var program = require('commander');
 
 function banner() {
-  log(chalk.white('FNMOC') + ' | ' + chalk.blue('CLI') + ' | ' + chalk.green(program.version()));
-  log(chalk.green(figlet.textSync('Cloud Apprentice', { horizontalLayout: 'full' })));
+  log(chalk.white('FNMOC') + ' | ' + chalk.blue('Cloud Apprentice') + ' | ' + chalk.green(program.version()));
+  log(chalk.green(figlet.textSync('Cloud CLI', { horizontalLayout: 'full' })));
 }
 
 
@@ -26,19 +26,28 @@ function banner() {
 
 program
   .version('0.1.0')
-  .option('-p, --peppers', 'Add peppers')
-  .option('-P, --pineapple', 'Add pineapple')
-  .option('-b, --bbq-sauce', 'Add bbq sauce')
-  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble');
+  // .option('-p, --peppers', 'Add peppers')
+  // .option('-P, --pineapple', 'Add pineapple')
+  // .option('-b, --bbq-sauce', 'Add bbq sauce')
+  // .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble');
 
   program
-  .command('setup [env]')
-  .description('run setup commands for all envs')
-  .option("-s, --setup_mode [mode]", "Which setup mode to use")
-  .action(function(env, options){
-    var mode = options.setup_mode || "normal";
+  .command('login')
+  .description('login to azure')
+  .action((env, options) => {
     env = env || 'all';
-    console.log('setup for %s env(s) with %s mode', env, mode);
+    log(`login for ${env}  mode`);
+  });
+
+
+  program
+  .command('pp')
+  .option('-s --size <size>', 'Pizza size', /^(large|medium|small)$/i, 'medium')
+  .option('-d --drink [drink]', 'Drink', /^(coke|pepsi|izze)$/i)
+  .description('login to azure')
+  .action((env, options) => {
+    log(' size: %j', program.size);
+    log(' drink: %j', program.drink);
   });
 
   program
@@ -59,7 +68,7 @@ program
 program
   .command('*')
   .action(function(env){
-    console.log('deploying "%s"', env);
+    console.log('deploying "%s"', JSON.parse(env));
   });
 
   program.on('--help', () => {
