@@ -36,9 +36,14 @@ program
   // .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble');
 
   program
-  .command('login')
+  .command('login <username> <password>')
   .description('login to azure')
-  .action(azureCMD.login);
+  .action((username, password, options) => {
+    log(' username: %s', username);
+    log(' password: %s', password);
+    azureCMD.login(username, password);
+  });
+
 
   program
   .command('list')

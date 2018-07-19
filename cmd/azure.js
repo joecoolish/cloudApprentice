@@ -4,14 +4,14 @@ const MsRest = require('ms-rest-azure');
 
 const log = console.log;
 
-function azurelogin() {
-  log('calling azurelogin');
+function azurelogin(username, password) {
+  log('calling azurelogin ', password);
 
-  // const user = process.env.AZURE_USER | 'sstrong@fnmoc.onmicrosoft.com';
-  // const pass = process.env.AZURE_PASS | '';
+  // const user = process.env.AZURE_USER || 'sstrong@fnmoc.onmicrosoft.com';
+  // const pass = process.env.AZURE_PASS || '';
 
-  const user = 'sstrong@fnmoc.onmicrosoft.com';
-  const pass =  '';
+  const user = username || 'sstrong@fnmoc.onmicrosoft.com';
+  const pass =  password || '';
 
 
   MsRest.loginWithUsernamePassword(user, pass, (err, credentials) => {
