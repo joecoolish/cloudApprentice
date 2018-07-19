@@ -4,7 +4,11 @@
   "description": "CLI wrapper around common cloud components",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "ca": "./index.js"
   },
   "keywords": [
     "cloud",
@@ -20,10 +24,12 @@
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
     "clui": "^0.3.6",
+    "commander": "^2.16.0",
     "configstore": "^3.1.2",
     "figlet": "^1.2.0",
     "inquirer": "^6.0.0",
     "lodash": "^4.17.10",
+    "preferences": "^1.0.2",
     "simple-git": "^1.96.0",
     "touch": "^3.1.0"
   }
