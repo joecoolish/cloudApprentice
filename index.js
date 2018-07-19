@@ -7,7 +7,9 @@ const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
-const Preferences = require('preferences');
+const preferences = require('preferences');
+
+const listfiles = require('./cmd/listfiles');
 
 const log = console.log;
 
@@ -38,6 +40,11 @@ program
     env = env || 'all';
     log(`login for ${env}  mode`);
   });
+
+  program
+  .command('list')
+  .description('list files')
+  .action(listfiles.cmd);
 
 
   program
