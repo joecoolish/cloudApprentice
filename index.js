@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
 //  https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/
-
+//  https://www.npmjs.com/package/azure-cli
 
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
-const Preferences = require('preferences');
+const preferences = require('preferences');
+
+const listfiles = require('./cmd/listfiles');
+
+const azureCMD = require('./cmd/azure');
 
 const log = console.log;
 
@@ -32,12 +36,19 @@ program
   // .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble');
 
   program
-  .command('login')
+  .command('login <username> <password>')
   .description('login to azure')
-  .action((env, options) => {
-    env = env || 'all';
-    log(`login for ${env}  mode`);
+  .action((username, password, options) => {
+    log(' username: %s', username);
+    log(' password: %s', password);
+    azureCMD.login(username, password);
   });
+
+
+  program
+  .command('list')
+  .description('list files')
+  .action(listfiles.cmd);
 
 
   program
