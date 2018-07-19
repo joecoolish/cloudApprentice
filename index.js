@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 //  https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/
-
+//  https://www.npmjs.com/package/azure-cli
 
 const chalk = require('chalk');
 const clear = require('clear');
