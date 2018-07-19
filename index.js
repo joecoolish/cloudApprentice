@@ -11,6 +11,8 @@ const preferences = require('preferences');
 
 const listfiles = require('./cmd/listfiles');
 
+const azureCMD = require('./cmd/azure');
+
 const log = console.log;
 
 clear();
@@ -36,10 +38,7 @@ program
   program
   .command('login')
   .description('login to azure')
-  .action((env, options) => {
-    env = env || 'all';
-    log(`login for ${env}  mode`);
-  });
+  .action(azureCMD.login);
 
   program
   .command('list')
