@@ -51,9 +51,9 @@ function azurelogin(username, password) {
           'subscription is successful.\n%s', util.inspect(result, { depth: null })));
         //callback(null, result);
       }
-    }
+    })
     // ..use the client instance to manage service resources.
-  }
+  })
 }
 
 
