@@ -30,7 +30,7 @@ function azurelogin(username, password) {
 
     log('calling login complete');
 
-    let subscriptionId = 'subscription-id';
+    let subscriptionId = 'b156ff74-abbe-49c8-bc92-b80e8a7bad23';
 
     resourceClient = new ResourceManagementClient(credentials, subscriptionId);
     computeClient = new ComputeManagementClient(credentials, subscriptionId);
@@ -53,7 +53,7 @@ function azurelogin(username, password) {
       }
     });
     // ..use the client instance to manage service resources.
-  }
+  });
 }
 
 
